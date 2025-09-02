@@ -18,11 +18,13 @@ const state = {
 function applyTheme() {
   const html = document.documentElement;
   if (state.theme === 'dark') {
+    html.classList.remove('light');
     html.classList.add('dark');
     $('#iconMoon').classList.add('hidden');
     $('#iconSun').classList.remove('hidden');
   } else {
     html.classList.remove('dark');
+    html.classList.add('light');
     $('#iconMoon').classList.remove('hidden');
     $('#iconSun').classList.add('hidden');
   }
@@ -97,7 +99,7 @@ function score(item, query) {
 function renderResults(items) {
   palette.results = items;
   palette.list.innerHTML = items.map((item, i) => `
-        <li class="group flex items-center gap-3 p-3 hover:bg-white/5 ${i === 0 ? 'bg-white/5' : ''}" data-index="${i}" role="button" tabindex="0" aria-label="${item.label}">
+        <li class="group flex items-center gap-3 p-3 hover:bg-white/5 ${i === 0 ? 'bg-white/5' : ''} command-item" data-index="${i}" role="button" tabindex="0" aria-label="${item.label}">
           <div class="size-2 rounded-full bg-emerald-400/70 group-hover:bg-emerald-300"></div>
           <div>
             <div class="text-sm">${item.label}</div>
@@ -175,6 +177,46 @@ function toast(msg) {
   setTimeout(() => n.remove(), 1600);
 }
 
+// update age display to match the age counter
+function updateAgeDisplay() {
+  const birth = new Date("2005-10-19T12:30:00");
+  const now = new Date();
+  const diffMs = now - birth;
+  const years = diffMs / (1000 * 60 * 60 * 24 * 365.2425);
+
+  // update the main age display
+  const ageElement = $('#ageDisplay');
+  if (ageElement) {
+    ageElement.textContent = Math.floor(years);
+  }
+
+  // update the detailed age counter
+  const ageCounterElement = $('#ageCounter');
+  if (ageCounterElement) {
+    ageCounterElement.textContent = years.toFixed(21);
+  }
+}
+
+// add some interactive hover effects for the skill cards
+function initSkillCards() {
+  const skillCards = document.querySelectorAll('#about .group');
+  skillCards.forEach(card => {
+    card.addEventListener('mouseenter', () => {
+      // add a subtle glow effect
+      card.style.transform = 'translateY(-2px)';
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = 'translateY(0)';
+    });
+  });
+}
+
 // initialize everything
 $('#year').textContent = new Date().getFullYear();
+updateAgeDisplay();
 applyTheme();
+initSkillCards();
+
+// update age counter every 100ms for smooth animation
+setInterval(updateAgeDisplay, 100);

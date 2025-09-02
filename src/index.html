@@ -11,6 +11,49 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'ui-sans-serif', 'system-ui'],
+                    },
+                    colors: {
+                        canvas: {
+                            DEFAULT: '#0b0f14',
+                            soft: '#0f151d',
+                            ring: '#1a2431',
+                            glow: '#5eead4',
+                        }
+                    },
+                    boxShadow: {
+                        glow: '0 0 0 1px rgba(94,234,212,.25), 0 10px 30px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.04)',
+                    },
+                    animation: {
+                        float: 'float 6s ease-in-out infinite',
+                        pulsegrid: 'pulsegrid 8s linear infinite',
+                        caret: 'caret 1.2s steps(1, end) infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-6px)' },
+                        },
+                        pulsegrid: {
+                            '0%': { opacity: '.25' },
+                            '50%': { opacity: '.5' },
+                            '100%': { opacity: '.25' },
+                        },
+                        caret: {
+                            '0%, 100%': { opacity: '1' },
+                            '50%': { opacity: '0' },
+                        },
+                    }
+                },
+            },
+        }
+    </script>
     <style>
         .bg-canvas {
             background-color: #0b0f14;
@@ -71,6 +114,345 @@
         .animate-float {
             animation: float 2s ease-in-out infinite;
         }
+
+        /* Light mode - maintaining visual hierarchy and impact */
+        .light .bg-canvas {
+            background-color: #fafbfc;
+        }
+
+        .light .bg-canvas\/60 {
+            background-color: rgba(250, 251, 252, 0.8);
+        }
+
+        .light .text-canvas {
+            color: #0f172a;
+        }
+
+        .light .border-canvas {
+            border-color: #cbd5e1;
+        }
+
+        .light .bg-canvas\.soft {
+            background-color: #ffffff;
+        }
+
+        .light body {
+            background-color: #fafbfc;
+            color: #0f172a;
+        }
+
+        /* Strong text hierarchy - maintaining impact */
+        .light .text-white {
+            color: #0f172a !important;
+        }
+
+        .light .text-white\/70 {
+            color: #334155 !important;
+        }
+
+        .light .text-white\/60 {
+            color: #64748b !important;
+        }
+
+        .light .text-white\/50 {
+            color: #94a3b8 !important;
+        }
+
+        .light .text-white\/40 {
+            color: #cbd5e1 !important;
+        }
+
+        /* Enhanced backgrounds for better contrast */
+        .light .bg-white\/5 {
+            background-color: #ffffff !important;
+            border: 1px solid #e2e8f0 !important;
+        }
+
+        .light .bg-white\/10 {
+            background-color: #f8fafc !important;
+            border: 1px solid #e2e8f0 !important;
+        }
+
+        .light .bg-white\/20 {
+            background-color: #f1f5f9 !important;
+        }
+
+        /* Stronger borders for definition */
+        .light .border-white\/10 {
+            border-color: #e2e8f0 !important;
+        }
+
+        .light .border-white\/20 {
+            border-color: #cbd5e1 !important;
+        }
+
+        /* Enhanced hover states */
+        .light .hover\:bg-white\/5:hover {
+            background-color: #f1f5f9 !important;
+            border-color: #cbd5e1 !important;
+        }
+
+        .light .hover\:bg-white\/10:hover {
+            background-color: #e2e8f0 !important;
+            border-color: #94a3b8 !important;
+        }
+
+        .light .hover\:border-white\/20:hover {
+            border-color: #94a3b8 !important;
+        }
+
+        /* Stronger emerald accents */
+        .light .hover\:border-emerald-300\/30:hover {
+            border-color: #059669 !important;
+            box-shadow: 0 0 0 1px rgba(5, 150, 105, 0.2) !important;
+        }
+
+        .light .hover\:border-emerald-400\/30:hover {
+            border-color: #047857 !important;
+            box-shadow: 0 0 0 1px rgba(4, 120, 87, 0.3) !important;
+        }
+
+        /* Enhanced selection colors */
+        .light .selection\:bg-teal-300\/20::selection {
+            background-color: rgba(5, 150, 105, 0.15) !important;
+        }
+
+        .light .selection\:text-teal-200::selection {
+            color: #047857 !important;
+        }
+
+        /* Subtle grid background */
+        .light .bg-grid {
+            background-image: radial-gradient(circle, #e2e8f0 1px, transparent 1px) !important;
+        }
+
+        /* Enhanced command palette */
+        .light .command-palette {
+            background-color: #ffffff !important;
+            border: 2px solid #059669 !important;
+            box-shadow: 0 25px 50px -12px rgba(5, 150, 105, 0.25), 0 0 0 1px rgba(5, 150, 105, 0.1) !important;
+        }
+
+        .light .command-item {
+            color: #0f172a !important;
+        }
+
+        .light .command-item:hover {
+            background-color: #f0fdf4 !important;
+            border-left: 3px solid #059669 !important;
+        }
+
+        /* Command palette button - stronger definition */
+        .light #openCmd {
+            background-color: #f0fdf4 !important;
+            border: 2px solid #059669 !important;
+            color: #047857 !important;
+            box-shadow: 0 4px 6px -1px rgba(5, 150, 105, 0.2) !important;
+        }
+
+        .light #openCmd:hover {
+            background-color: #dcfce7 !important;
+            border-color: #047857 !important;
+            box-shadow: 0 6px 8px -1px rgba(5, 150, 105, 0.3) !important;
+        }
+
+        /* Enhanced resume drawer */
+        .light .resume-drawer {
+            background-color: #ffffff !important;
+            border: 2px solid #e2e8f0 !important;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15) !important;
+        }
+
+        /* Project cards - stronger definition */
+        .light .project-card {
+            background-color: #ffffff !important;
+            border: 2px solid #cbd5e1 !important;
+            box-shadow: 0 8px 12px -2px rgba(0, 0, 0, 0.15), 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
+        }
+
+        .light .project-card:hover {
+            border-color: #059669 !important;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15), 0 10px 10px -5px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(5, 150, 105, 0.3) !important;
+            transform: translateY(-4px) !important;
+        }
+
+        /* Project image placeholders - better contrast */
+        .light .project-card .aspect-video {
+            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%) !important;
+            border: 1px solid #cbd5e1 !important;
+        }
+
+        .light .project-card .aspect-video div {
+            color: #64748b !important;
+            font-weight: 500 !important;
+        }
+
+        /* Skill cards - enhanced contrast */
+        .light .skill-card {
+            background-color: #ffffff !important;
+            border: 2px solid #cbd5e1 !important;
+            box-shadow: 0 6px 8px -2px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+        }
+
+        .light .skill-card:hover {
+            border-color: #059669 !important;
+            box-shadow: 0 12px 16px -4px rgba(0, 0, 0, 0.15), 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(5, 150, 105, 0.3) !important;
+            transform: translateY(-2px) !important;
+        }
+
+        /* Skill card text enhancement */
+        .light .skill-card h3 {
+            color: #0f172a !important;
+            font-weight: 700 !important;
+        }
+
+        .light .skill-card p {
+            color: #475569 !important;
+            font-weight: 500 !important;
+        }
+
+        /* Music player - better integration */
+        .light .music-player {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%) !important;
+            border: 2px solid #059669 !important;
+            box-shadow: 0 12px 16px -4px rgba(5, 150, 105, 0.2), 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
+        }
+
+        .light .music-player .text-white\/60 {
+            color: #047857 !important;
+            font-weight: 600 !important;
+        }
+
+        .light .music-player .text-white\/40 {
+            color: #059669 !important;
+        }
+
+        /* Music player equalizer bars */
+        .light .music-player .bg-white\/5 {
+            background-color: #059669 !important;
+            opacity: 0.7 !important;
+        }
+
+        /* Header - stronger definition */
+        .light header {
+            background-color: rgba(255, 255, 255, 0.9) !important;
+            border-bottom: 2px solid #e2e8f0 !important;
+            backdrop-filter: blur(12px) !important;
+        }
+
+        /* Enhanced emerald text for "Liam" */
+        .light .text-emerald-400 {
+            color: #047857 !important;
+            font-weight: 800 !important;
+        }
+
+        /* Stronger button styling */
+        .light .btn-primary {
+            background: linear-gradient(135deg, #047857 0%, #059669 100%) !important;
+            color: #ffffff !important;
+            border: none !important;
+            box-shadow: 0 4px 6px -1px rgba(4, 120, 87, 0.3) !important;
+        }
+
+        .light .btn-primary:hover {
+            background: linear-gradient(135deg, #065f46 0%, #047857 100%) !important;
+            box-shadow: 0 6px 8px -1px rgba(4, 120, 87, 0.4) !important;
+            transform: translateY(-1px) !important;
+        }
+
+        .light .btn-secondary {
+            background-color: #ffffff !important;
+            color: #0f172a !important;
+            border: 2px solid #e2e8f0 !important;
+        }
+
+        .light .btn-secondary:hover {
+            background-color: #f1f5f9 !important;
+            border-color: #cbd5e1 !important;
+        }
+
+        /* Hero text enhancement */
+        .light .hero-subtext {
+            color: #475569 !important;
+            font-weight: 500 !important;
+        }
+
+        /* Statistics area - more impactful */
+        .light .stat-card {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%) !important;
+            border: 2px solid #059669 !important;
+            box-shadow: 0 8px 12px -2px rgba(5, 150, 105, 0.2) !important;
+        }
+
+        .light .stat-card:hover {
+            background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%) !important;
+            box-shadow: 0 12px 16px -4px rgba(5, 150, 105, 0.3) !important;
+            transform: translateY(-2px) !important;
+        }
+
+        .light .stat-number {
+            color: #047857 !important;
+            font-weight: 800 !important;
+            text-shadow: 0 1px 2px rgba(5, 150, 105, 0.1) !important;
+        }
+
+        .light .stat-label {
+            color: #065f46 !important;
+            font-weight: 600 !important;
+        }
+
+        /* Age counter enhancement */
+        .light #ageCounter {
+            color: #059669 !important;
+            font-weight: 600 !important;
+        }
+
+        /* Currently Learning and Fun Fact cards */
+        .light .info-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%) !important;
+            border: 2px solid #cbd5e1 !important;
+            box-shadow: 0 6px 8px -2px rgba(0, 0, 0, 0.1) !important;
+        }
+
+        .light .info-card:hover {
+            border-color: #059669 !important;
+            box-shadow: 0 10px 12px -2px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(5, 150, 105, 0.2) !important;
+        }
+
+        /* About Me section text fixes */
+        .light #about .text-white {
+            color: #0f172a !important;
+        }
+
+        .light #about .text-white\/70 {
+            color: #334155 !important;
+        }
+
+        .light #about .text-white\/60 {
+            color: #475569 !important;
+        }
+
+        .light #about .text-white\/50 {
+            color: #64748b !important;
+        }
+
+        .light #about .text-white\/40 {
+            color: #94a3b8 !important;
+        }
+
+        /* About Me bio text */
+        .light #about p {
+            color: #334155 !important;
+        }
+
+        /* About Me section headings */
+        .light #about h2 {
+            color: #0f172a !important;
+        }
+
+        .light #about h3 {
+            color: #0f172a !important;
+        }
     </style>
 </head>
 
@@ -80,7 +462,7 @@
         <div class="absolute inset-0 bg-[radial-gradient(60%_40%_at_50%_0%,rgba(94,234,212,0.06),rgba(11,15,20,0))]">
         </div>
         <div
-            class="absolute inset-0 [background-image:linear-gradient(transparent,transparent),linear-gradient(#111827_1px,transparent_1px),linear-gradient(90deg,#111827_1px,transparent_1px)] bg-[length:100%_100%,32px_32px,32px_32px] opacity-30 animate-pulsegrid">
+            class="absolute inset-0 [background-image:linear-gradient(transparent,transparent),linear-gradient(#111827_1px,transparent_1px),linear-gradient(90deg,#111827_1px,transparent_1px)] bg-[length:100%_100%,32px_32px,32px_32px] opacity-30 animate-pulsegrid bg-grid">
         </div>
     </div>
 
@@ -136,7 +518,7 @@
                     — I
                     turn my crazy ideas into a reality
                 </h1>
-                <p class="mt-5 text-white/70 max-w-prose">
+                <p class="mt-5 text-white/70 max-w-prose hero-subtext">
                     I built this site with vanilla JS because I got tired of frameworks breaking things. Try the
                     <span class="font-semibold text-white">command palette</span> - hit
                     <kbd class="px-1 py-0.5 rounded bg-white/10 border border-white/10">⌘K</kbd> (or <kbd
@@ -144,14 +526,14 @@
                 </p>
                 <div class="mt-8 flex gap-3">
                     <a href="#projects"
-                        class="inline-flex items-center gap-2 rounded-xl px-4 py-2.5 bg-emerald-400/10 hover:bg-emerald-400/20 border border-emerald-300/20 shadow-glow">
+                        class="inline-flex items-center gap-2 rounded-xl px-4 py-2.5 bg-emerald-400/10 hover:bg-emerald-400/20 border border-emerald-300/20 shadow-glow btn-primary">
                         <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                             <path d="m9 18 6-6-6-6" />
                         </svg>
                         View Projects
                     </a>
                     <button id="openResume"
-                        class="inline-flex items-center gap-2 rounded-xl px-4 py-2.5 bg-white/5 hover:bg-white/10 border border-white/10 shadow-glow">
+                        class="inline-flex items-center gap-2 rounded-xl px-4 py-2.5 bg-white/5 hover:bg-white/10 border border-white/10 shadow-glow btn-secondary">
                         <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                             <path d="M8 7h8M8 11h8M8 15h6" />
                             <path d="M6 3h12a2 2 0 0 1 2 2v14l-4-3-4 3-4-3-4 3V5a2 2 0 0 1 2-2z" />
@@ -165,7 +547,7 @@
                     class="absolute -inset-6 rounded-3xl bg-gradient-to-tr from-emerald-300/10 via-emerald-400/10 to-teal-300/10 blur-2xl">
                 </div>
                 <div
-                    class="relative rounded-3xl border border-white/10 bg-gradient-to-b from-gray-800/50 to-black/20 p-6 shadow-glow">
+                    class="relative rounded-3xl border border-white/10 bg-gradient-to-b from-gray-800/50 to-black/20 p-6 shadow-glow music-player">
                     <div class="flex items-center justify-between">
                         <div class="text-sm text-white/60">now playing</div>
                         <div class="text-xs text-white/40">(spotify integration coming soon)</div>
@@ -193,33 +575,12 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Age Counter Section -->
-                    <div class="mt-6 pt-4 border-t border-white/10">
-                        <div class="text-sm text-white/60">current age</div>
-                        <div id="ageCounter" class="text-2xl sm:text-3xl font-mono text-emerald-300"></div>
-                    </div>
+
                 </div>
             </div>
         </div>
     </section>
-    <!-- Age Counter Script -->
-    <script>
-        function updateAge() {
-            // Birth date: October 19, 2005 at 12:30 PM
-            const birth = new Date("2005-10-19T12:30:00");
-            // Current time
-            const now = new Date();
-            // Milliseconds difference
-            const diffMs = now - birth;
-            // Convert to years (365.2425 days per year for leap years)
-            const years = diffMs / (1000 * 60 * 60 * 24 * 365.2425);
-            // Show with 9 decimal places
-            document.getElementById("ageCounter").textContent = years.toFixed(21);
-        }
-        // Update 10x per second for smoothness
-        setInterval(updateAge, 100);
-        updateAge();
-    </script>
+
 
     <!-- Projects -->
     <section id="projects" class="mx-auto max-w-6xl px-4 py-12">
@@ -233,7 +594,7 @@
         <div id="projectGrid" class="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             <!-- Project Card 1 -->
             <article
-                class="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur hover:border-emerald-300/30 transition-colors">
+                class="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur hover:border-emerald-300/30 transition-colors project-card">
                 <div
                     class="aspect-video overflow-hidden bg-gradient-to-br from-gray-700/50 to-gray-800/50 flex items-center justify-center">
                     <div class="text-white/40 text-sm">Project Image</div>
@@ -254,7 +615,7 @@
 
             <!-- Project Card 2 -->
             <article
-                class="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur hover:border-emerald-300/30 transition-colors">
+                class="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur hover:border-emerald-300/30 transition-colors project-card">
                 <div
                     class="aspect-video overflow-hidden bg-gradient-to-br from-gray-700/50 to-gray-800/50 flex items-center justify-center">
                     <div class="text-white/40 text-sm">Project Image</div>
@@ -275,7 +636,7 @@
 
             <!-- Project Card 3 -->
             <article
-                class="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur hover:border-emerald-300/30 transition-colors">
+                class="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur hover:border-emerald-300/30 transition-colors project-card">
                 <div
                     class="aspect-video overflow-hidden bg-gradient-to-br from-gray-700/50 to-gray-800/50 flex items-center justify-center">
                     <div class="text-white/40 text-sm">Project Image</div>
@@ -296,7 +657,7 @@
 
             <!-- Project Card 4 -->
             <article
-                class="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur hover:border-emerald-300/30 transition-colors">
+                class="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur hover:border-emerald-300/30 transition-colors project-card">
                 <div
                     class="aspect-video overflow-hidden bg-gradient-to-br from-gray-700/50 to-gray-800/50 flex items-center justify-center">
                     <div class="text-white/40 text-sm">Project Image</div>
@@ -317,7 +678,7 @@
 
             <!-- Project Card 5 -->
             <article
-                class="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur hover:border-emerald-300/30 transition-colors">
+                class="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur hover:border-emerald-300/30 transition-colors project-card">
                 <div
                     class="aspect-video overflow-hidden bg-gradient-to-br from-gray-700/50 to-gray-800/50 flex items-center justify-center">
                     <div class="text-white/40 text-sm">Project Image</div>
@@ -338,7 +699,7 @@
 
             <!-- Project Card 6 -->
             <article
-                class="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur hover:border-emerald-300/30 transition-colors">
+                class="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur hover:border-emerald-300/30 transition-colors project-card">
                 <div
                     class="aspect-video overflow-hidden bg-gradient-to-br from-gray-700/50 to-gray-800/50 flex items-center justify-center">
                     <div class="text-white/40 text-sm">Project Image</div>
@@ -360,22 +721,201 @@
     </section>
     <!-- About / Skills -->
     <section id="about" class="mx-auto max-w-6xl px-4 py-16">
-        <div class="grid md:grid-cols-3 gap-10">
-            <div class="md:col-span-2">
-                <h2 class="text-2xl sm:text-3xl font-bold">About</h2>
-                <p class="mt-4 text-white/70 leading-relaxed">
-                    I'm a CS student at USF who likes building things that work well. I prefer vanilla JavaScript over
-                    frameworks because I want to understand what's actually happening under the hood. Plus, it's faster.
-                </p>
-            </div>
+        <div class="grid lg:grid-cols-2 gap-12">
+            <!-- Left side - Interactive skill showcase -->
             <div>
-                <h3 class="font-semibold">Core Stack</h3>
-                <ul class="mt-3 space-y-2 text-white/70">
-                    <li>HTML, CSS/Tailwind, JavaScript</li>
-                    <li>Node.js, Express</li>
-                    <li>Three.js (learning WebGL)</li>
-                    <li>Git, Linux, Vim</li>
-                </ul>
+                <h2 class="text-2xl sm:text-3xl font-bold mb-8">What I Build With</h2>
+
+                <!-- Skill categories with hover effects -->
+                <div class="space-y-4">
+                    <!-- Frontend Skills -->
+                    <div class="group relative">
+                        <div
+                            class="flex items-center gap-3 p-4 rounded-xl border border-white/10 bg-white/5 hover:border-emerald-300/30 transition-all duration-300 cursor-pointer skill-card">
+                            <div
+                                class="w-12 h-12 rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                                </svg>
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="font-semibold text-white group-hover:text-emerald-300 transition-colors">
+                                    Frontend</h3>
+                                <p class="text-sm text-white/60">HTML, CSS/Tailwind, JavaScript</p>
+                            </div>
+                            <div class="text-emerald-400 opacity-0 group-hover:opacity-100 transition-opacity">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </div>
+                        </div>
+                        <!-- Hover details -->
+                        <div
+                            class="absolute top-full left-0 right-0 mt-2 p-4 rounded-xl bg-canvas.soft border border-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
+                            <p class="text-sm text-white/80">Building fast, responsive interfaces without the bloat.
+                                Prefer vanilla JS over frameworks.</p>
+                        </div>
+                    </div>
+
+                    <!-- Backend Skills -->
+                    <div class="group relative">
+                        <div
+                            class="flex items-center gap-3 p-4 rounded-xl border border-white/10 bg-white/5 hover:border-emerald-300/30 transition-all duration-300 cursor-pointer skill-card">
+                            <div
+                                class="w-12 h-12 rounded-lg bg-gradient-to-br from-green-500 to-teal-600 flex items-center justify-center">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2">
+                                    </path>
+                                </svg>
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="font-semibold text-white group-hover:text-emerald-300 transition-colors">
+                                    Backend</h3>
+                                <p class="text-sm text-white/60">Node.js, Express, REST APIs</p>
+                            </div>
+                            <div class="text-emerald-400 opacity-0 group-hover:opacity-100 transition-opacity">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </div>
+                        </div>
+                        <div
+                            class="absolute top-full left-0 right-0 mt-2 p-4 rounded-xl bg-canvas.soft border border-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
+                            <p class="text-sm text-white/80">Building APIs that actually work. No over-engineering, just
+                                clean, efficient code.</p>
+                        </div>
+                    </div>
+
+                    <!-- 3D/Graphics -->
+                    <div class="group relative">
+                        <div
+                            class="flex items-center gap-3 p-4 rounded-xl border border-white/10 bg-white/5 hover:border-emerald-300/30 transition-all duration-300 cursor-pointer skill-card">
+                            <div
+                                class="w-12 h-12 rounded-lg bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10">
+                                    </path>
+                                </svg>
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="font-semibold text-white group-hover:text-emerald-300 transition-colors">3D
+                                    Graphics</h3>
+                                <p class="text-sm text-white/60">Three.js, WebGL (learning)</p>
+                            </div>
+                            <div class="text-emerald-400 opacity-0 group-hover:opacity-100 transition-opacity">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </div>
+                        </div>
+                        <div
+                            class="absolute top-full left-0 right-0 mt-2 p-4 rounded-xl bg-canvas.soft border border-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
+                            <p class="text-sm text-white/80">Exploring the third dimension. Making cool 3D stuff in the
+                                browser.</p>
+                        </div>
+                    </div>
+
+                    <!-- Tools -->
+                    <div class="group relative">
+                        <div
+                            class="flex items-center gap-3 p-4 rounded-xl border border-white/10 bg-white/5 hover:border-emerald-300/30 transition-all duration-300 cursor-pointer skill-card">
+                            <div
+                                class="w-12 h-12 rounded-lg bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z">
+                                    </path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                </svg>
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="font-semibold text-white group-hover:text-emerald-300 transition-colors">
+                                    Tools</h3>
+                                <p class="text-sm text-white/60">Git, Linux, Vim</p>
+                            </div>
+                            <div class="text-emerald-400 opacity-0 group-hover:opacity-100 transition-opacity">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 5l7 7-7 7"></path>
+                                </svg>
+                            </div>
+                        </div>
+                        <div
+                            class="absolute top-full left-0 right-0 mt-2 p-4 rounded-xl bg-canvas.soft border border-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
+                            <p class="text-sm text-white/80">The essentials. Git for version control, Linux for
+                                everything, Vim because I'm not a masochist.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right side - About me with interactive elements -->
+            <div>
+                <h2 class="text-2xl sm:text-3xl font-bold mb-8">About Me</h2>
+
+                <div class="space-y-6">
+                    <!-- Main bio -->
+                    <div class="p-6 rounded-xl border border-white/10 bg-white/5">
+                        <p class="text-white/80 leading-relaxed">
+                            I'm a CS student at USF who likes building things that work well. I prefer vanilla
+                            JavaScript over
+                            frameworks because I want to understand what's actually happening under the hood. Plus, it's
+                            faster.
+                        </p>
+                    </div>
+
+                    <!-- Interactive stats -->
+                    <div class="grid grid-cols-2 gap-4">
+                        <div
+                            class="p-4 rounded-xl border border-white/10 bg-white/5 text-center hover:border-emerald-300/30 transition-colors cursor-pointer stat-card">
+                            <div class="text-2xl font-bold text-emerald-400 stat-number" id="ageDisplay">18</div>
+                            <div class="text-sm text-white/60 stat-label">Years Old</div>
+                            <div class="text-xs text-white/40 mt-1 font-mono" id="ageCounter">18.000000000</div>
+                        </div>
+                        <div
+                            class="p-4 rounded-xl border border-white/10 bg-white/5 text-center hover:border-emerald-300/30 transition-colors cursor-pointer stat-card">
+                            <div class="text-2xl font-bold text-emerald-400 stat-number">3+</div>
+                            <div class="text-sm text-white/60 stat-label">Years Coding</div>
+                        </div>
+                    </div>
+
+                    <!-- Current focus -->
+                    <div class="p-4 rounded-xl border border-emerald-300/20 bg-emerald-400/5 info-card">
+                        <div class="flex items-center gap-3">
+                            <div class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></div>
+                            <div>
+                                <div class="font-semibold text-white">Currently Learning</div>
+                                <div class="text-sm text-white/70">WebGL and 3D graphics programming</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Fun fact -->
+                    <div class="p-4 rounded-xl border border-white/10 bg-white/5 info-card">
+                        <div class="flex items-start gap-3">
+                            <div
+                                class="w-6 h-6 rounded-full bg-blue-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <svg class="w-3 h-3 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd"
+                                        d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="font-semibold text-white">Fun Fact</div>
+                                <div class="text-sm text-white/70">I built this entire site without any JavaScript
+                                    frameworks. Sometimes the old ways are the best ways.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -398,7 +938,7 @@
         <div class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
 
         <div
-            class="relative mx-auto mt-24 w-[92vw] max-w-2xl rounded-2xl border border-white/10 bg-canvas.soft shadow-glow">
+            class="relative mx-auto mt-24 w-[92vw] max-w-2xl rounded-2xl border border-white/10 bg-canvas.soft shadow-glow command-palette">
             <div class="p-3 border-b border-white/10">
                 <div class="flex items-center gap-2">
                     <svg class="size-4 opacity-70" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -427,7 +967,7 @@
 
     <!-- Resume Drawer -->
     <div id="resumeDrawer" class="fixed inset-x-0 bottom-0 z-40 translate-y-full transition-transform duration-300">
-        <div class="mx-auto max-w-4xl m-4 rounded-2xl border border-white/10 bg-canvas.soft shadow-glow">
+        <div class="mx-auto max-w-4xl m-4 rounded-2xl border border-white/10 bg-canvas.soft shadow-glow resume-drawer">
             <div class="flex items-center justify-between p-4 border-b border-white/10">
                 <div class="text-sm text-white/70">Quick Resume</div>
                 <button id="closeResume" class="rounded-lg p-2 hover:bg-white/5 border border-white/10"

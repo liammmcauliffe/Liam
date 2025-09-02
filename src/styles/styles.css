@@ -11,7 +11,7 @@
   --color-canvas-glow: #5eead4;
 
   /* Custom Box Shadow */
-  --shadow-glow: 0 0 0 1px rgba(94,234,212,.25), 0 10px 30px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.04);
+  --shadow-glow: 0 0 0 1px rgba(94, 234, 212, .25), 0 10px 30px rgba(0, 0, 0, .45), inset 0 1px 0 rgba(255, 255, 255, .04);
 
   /* Animations & Keyframes */
   --animate-float: float 6s ease-in-out infinite;
@@ -19,31 +19,53 @@
   --animate-caret: caret 1.2s steps(1, end) infinite;
 
   @keyframes float {
-    0%, 100% { transform: translateY(0px) }
-    50% { transform: translateY(-6px) }
+
+    0%,
+    100% {
+      transform: translateY(0px)
+    }
+
+    50% {
+      transform: translateY(-6px)
+    }
   }
 
   @keyframes pulsegrid {
-    0% { opacity: .25 }
-    50% { opacity: .5 }
-    100% { opacity: .25 }
+    0% {
+      opacity: .25
+    }
+
+    50% {
+      opacity: .5
+    }
+
+    100% {
+      opacity: .25
+    }
   }
-  
+
   @keyframes caret {
-    0%, 100% { opacity: 1 }
-    50% { opacity: 0 }
+
+    0%,
+    100% {
+      opacity: 1
+    }
+
+    50% {
+      opacity: 0
+    }
   }
 }
 
 html {
-scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 .no-scrollbar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 .no-scrollbar::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
