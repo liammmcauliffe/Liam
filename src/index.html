@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liam McAuliffe</title>
+    <meta name="description" content="CS student who builds things that work. No frameworks, just good code." />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .bg-canvas {
+            background-color: #0b0f14;
+        }
+
+        .bg-canvas\/60 {
+            background-color: rgba(11, 15, 20, 0.6);
+        }
+
+        .text-canvas {
+            color: #0b0f14;
+        }
+
+        .border-canvas {
+            border-color: #0b0f14;
+        }
+
+        .bg-canvas\.soft {
+            background-color: #111827;
+        }
+
+        .shadow-glow {
+            box-shadow: 0 0 20px rgba(94, 234, 212, 0.1);
+        }
+
+        .focus-visible\:ring-canvas\.glow:focus-visible {
+            ring-color: rgba(94, 234, 212, 0.3);
+        }
+
+        @keyframes pulsegrid {
+
+            0%,
+            100% {
+                opacity: 0.3;
+            }
+
+            50% {
+                opacity: 0.15;
+            }
+        }
+
+        .animate-pulsegrid {
+            animation: pulsegrid 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: scaleY(1);
+            }
+
+            50% {
+                transform: scaleY(1.5);
+            }
+        }
+
+        .animate-float {
+            animation: float 2s ease-in-out infinite;
+        }
+    </style>
+</head>
+
+<body class="h-full bg-canvas text-white selection:bg-teal-300/20 selection:text-teal-200">
+    <!-- Pulsing Background -->
+    <div aria-hidden="true" class="fixed inset-0 -z-10">
+        <div class="absolute inset-0 bg-[radial-gradient(60%_40%_at_50%_0%,rgba(94,234,212,0.06),rgba(11,15,20,0))]">
+        </div>
+        <div
+            class="absolute inset-0 [background-image:linear-gradient(transparent,transparent),linear-gradient(#111827_1px,transparent_1px),linear-gradient(90deg,#111827_1px,transparent_1px)] bg-[length:100%_100%,32px_32px,32px_32px] opacity-30 animate-pulsegrid">
+        </div>
+    </div>
+
+    <!-- Top Bar -->
+    <header class="sticky top-0 z-30 backdrop-blur supports-[backdrop-filter]:bg-canvas/60 border-b border-white/5">
+        <div class="mx-auto max-w-6xl px-4 py-3 flex items-center gap-3">
+            <button id="themeToggle"
+                class="rounded-xl p-2 hover:bg-white/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-canvas.glow"
+                aria-label="Toggle theme" title="Toggle theme">
+                <!-- Sun/Moon Icons -->
+                <svg id="iconSun" class="size-5 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="1.5">
+                    <path
+                        d="M12 3v2m0 14v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M3 12h2m14 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+                    <circle cx="12" cy="12" r="4" />
+                </svg>
+                <svg id="iconMoon" class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="1.5">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                </svg>
+            </button>
+            <button id="openCmd"
+                class="group flex items-center gap-2 rounded-xl px-3 py-2 bg-white/5 hover:bg-white/10 border border-white/10 text-sm shadow-glow focus:outline-none focus-visible:ring-2 focus-visible:ring-canvas.glow"
+                aria-haspopup="dialog" aria-controls="commandPalette" aria-expanded="false">
+                <svg class="size-4 opacity-80 group-hover:opacity-100" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="1.5">
+                    <path d="M18 10H6m12 4H6" />
+                </svg>
+                <span class="font-medium">Command Palette</span>
+                <kbd class="ml-1 text-xs px-1.5 py-0.5 rounded bg-white/10 border border-white/10">⌘K</kbd>
+            </button>
+            <div class="ml-auto text-sm text-white/60">
+                <span class="hidden sm:inline">Press </span><kbd
+                    class="px-1.5 py-0.5 rounded bg-white/10 border border-white/10">Tab</kbd> to explore · <a
+                    href="#projects" class="underline decoration-dotted hover:text-white">Jump to Projects</a>
+            </div>
+        </div>
+
+
+    </header>
+    <!-- Hero -->
+    <section class="mx-auto max-w-6xl px-4 py-10 sm:py-10">
+        <div class="grid md:grid-cols-2 gap-10 items-center">
+            <div>
+                <div
+                    class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/70">
+                    <span class="inline-flex size-1.5 rounded-full bg-emerald-400 animate-ping"></span>
+                    Looking for internships · Fall 2025
+                </div>
+                <h1 class="mt-5 text-4xl sm:text-6xl font-extrabold tracking-tight leading-[1.1]">
+                    Hi, I'm <span
+                        class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 to-teal-400">Liam</span>
+                    — I
+                    turn my crazy ideas into a reality
+                </h1>
+                <p class="mt-5 text-white/70 max-w-prose">
+                    I built this site with vanilla JS because I got tired of frameworks breaking things. Try the
+                    <span class="font-semibold text-white">command palette</span> - hit
+                    <kbd class="px-1 py-0.5 rounded bg-white/10 border border-white/10">⌘K</kbd> (or <kbd
+                        class="px-1 py-0.5 rounded bg-white/10 border border-white/10">Ctrl+K</kbd>) to navigate around.
+                </p>
+                <div class="mt-8 flex gap-3">
+                    <a href="#projects"
+                        class="inline-flex items-center gap-2 rounded-xl px-4 py-2.5 bg-emerald-400/10 hover:bg-emerald-400/20 border border-emerald-300/20 shadow-glow">
+                        <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="m9 18 6-6-6-6" />
+                        </svg>
+                        View Projects
+                    </a>
+                    <button id="openResume"
+                        class="inline-flex items-center gap-2 rounded-xl px-4 py-2.5 bg-white/5 hover:bg-white/10 border border-white/10 shadow-glow">
+                        <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M8 7h8M8 11h8M8 15h6" />
+                            <path d="M6 3h12a2 2 0 0 1 2 2v14l-4-3-4 3-4-3-4 3V5a2 2 0 0 1 2-2z" />
+                        </svg>
+                        Resume
+                    </button>
+                </div>
+            </div>
+            <div class="relative">
+                <div
+                    class="absolute -inset-6 rounded-3xl bg-gradient-to-tr from-emerald-300/10 via-emerald-400/10 to-teal-300/10 blur-2xl">
+                </div>
+                <div
+                    class="relative rounded-3xl border border-white/10 bg-gradient-to-b from-gray-800/50 to-black/20 p-6 shadow-glow">
+                    <div class="flex items-center justify-between">
+                        <div class="text-sm text-white/60">now playing</div>
+                        <div class="text-xs text-white/40">(spotify integration coming soon)</div>
+                    </div>
+                    <div class="my-10 grid grid-cols-7 gap-1">
+                        <!-- minimalist equalizer bars -->
+                        <div class="h-24 bg-white/5 rounded animate-float" style="animation-delay:0s"></div>
+                        <div class="h-20 bg-white/5 rounded animate-float" style="animation-delay:.2s"></div>
+                        <div class="h-28 bg-white/5 rounded animate-float" style="animation-delay:.4s"></div>
+                        <div class="h-16 bg-white/5 rounded animate-float" style="animation-delay:.6s"></div>
+                        <div class="h-24 bg-white/5 rounded animate-float" style="animation-delay:.8s"></div>
+                        <div class="h-12 bg-white/5 rounded animate-float" style="animation-delay:1s"></div>
+                        <div class="h-20 bg-white/5 rounded animate-float" style="animation-delay:1.2s"></div>
+                    </div>
+
+                    <div class="mt-6 text-sm text-white/70 flex items-center">
+                        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/b/ba/Radioheadokcomputer.png/250px-Radioheadokcomputer.png"
+                            class="w-16 h-16 rounded-2xl border-white/5 border-2"></img>
+                        <div class="h-full px-2 flex flex-col gap-2">
+                            <div class="text-2xl font-bold text-white">Karma Police</div>
+                            <div class="flex">
+                                <div class="">OK Computer</div>
+                                <span class="px-1.5">·</span>
+                                <div class="">Radiohead</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Age Counter Section -->
+                    <div class="mt-6 pt-4 border-t border-white/10">
+                        <div class="text-sm text-white/60">current age</div>
+                        <div id="ageCounter" class="text-2xl sm:text-3xl font-mono text-emerald-300"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Age Counter Script -->
+    <script>
+        function updateAge() {
+            // Birth date: October 19, 2005 at 12:30 PM
+            const birth = new Date("2005-10-19T12:30:00");
+            // Current time
+            const now = new Date();
+            // Milliseconds difference
+            const diffMs = now - birth;
+            // Convert to years (365.2425 days per year for leap years)
+            const years = diffMs / (1000 * 60 * 60 * 24 * 365.2425);
+            // Show with 9 decimal places
+            document.getElementById("ageCounter").textContent = years.toFixed(21);
+        }
+        // Update 10x per second for smoothness
+        setInterval(updateAge, 100);
+        updateAge();
+    </script>
+
+    <!-- Projects -->
+    <section id="projects" class="mx-auto max-w-6xl px-4 py-12">
+        <div class="flex items-end justify-between gap-4">
+            <h2 class="text-2xl sm:text-3xl font-bold">Projects</h2>
+            <button data-cmd="filter"
+                class="text-sm rounded-lg px-3 py-1.5 bg-white/5 hover:bg-white/10 border border-white/10">Filter
+                (⌘K)</button>
+        </div>
+
+        <div id="projectGrid" class="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            <!-- Project Card 1 -->
+            <article
+                class="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur hover:border-emerald-300/30 transition-colors">
+                <div
+                    class="aspect-video overflow-hidden bg-gradient-to-br from-gray-700/50 to-gray-800/50 flex items-center justify-center">
+                    <div class="text-white/40 text-sm">Project Image</div>
+                </div>
+                <div class="p-4">
+                    <h3 class="font-semibold">Project Title</h3>
+                    <p class="mt-1 text-sm text-white/70 line-clamp-2">Brief description of what this project does and
+                        the
+                        technologies used to build it.</p>
+                    <div class="mt-3 flex items-center gap-2 text-xs text-white/60">
+                        <span class="rounded-full bg-emerald-400/10 border border-emerald-300/20 px-2 py-0.5">Tag
+                            1</span>
+                        <span class="rounded-full bg-white/10 border border-white/10 px-2 py-0.5">Tag 2</span>
+                        <a href="#" class="ml-auto underline decoration-dotted">Link</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Project Card 2 -->
+            <article
+                class="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur hover:border-emerald-300/30 transition-colors">
+                <div
+                    class="aspect-video overflow-hidden bg-gradient-to-br from-gray-700/50 to-gray-800/50 flex items-center justify-center">
+                    <div class="text-white/40 text-sm">Project Image</div>
+                </div>
+                <div class="p-4">
+                    <h3 class="font-semibold">Project Title</h3>
+                    <p class="mt-1 text-sm text-white/70 line-clamp-2">Brief description of what this project does and
+                        the
+                        technologies used to build it.</p>
+                    <div class="mt-3 flex items-center gap-2 text-xs text-white/60">
+                        <span class="rounded-full bg-emerald-400/10 border border-emerald-300/20 px-2 py-0.5">Tag
+                            1</span>
+                        <span class="rounded-full bg-white/10 border border-white/10 px-2 py-0.5">Tag 2</span>
+                        <a href="#" class="ml-auto underline decoration-dotted">Link</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Project Card 3 -->
+            <article
+                class="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur hover:border-emerald-300/30 transition-colors">
+                <div
+                    class="aspect-video overflow-hidden bg-gradient-to-br from-gray-700/50 to-gray-800/50 flex items-center justify-center">
+                    <div class="text-white/40 text-sm">Project Image</div>
+                </div>
+                <div class="p-4">
+                    <h3 class="font-semibold">Project Title</h3>
+                    <p class="mt-1 text-sm text-white/70 line-clamp-2">Brief description of what this project does and
+                        the
+                        technologies used to build it.</p>
+                    <div class="mt-3 flex items-center gap-2 text-xs text-white/60">
+                        <span class="rounded-full bg-emerald-400/10 border border-emerald-300/20 px-2 py-0.5">Tag
+                            1</span>
+                        <span class="rounded-full bg-white/10 border border-white/10 px-2 py-0.5">Tag 2</span>
+                        <a href="#" class="ml-auto underline decoration-dotted">Link</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Project Card 4 -->
+            <article
+                class="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur hover:border-emerald-300/30 transition-colors">
+                <div
+                    class="aspect-video overflow-hidden bg-gradient-to-br from-gray-700/50 to-gray-800/50 flex items-center justify-center">
+                    <div class="text-white/40 text-sm">Project Image</div>
+                </div>
+                <div class="p-4">
+                    <h3 class="font-semibold">Project Title</h3>
+                    <p class="mt-1 text-sm text-white/70 line-clamp-2">Brief description of what this project does and
+                        the
+                        technologies used to build it.</p>
+                    <div class="mt-3 flex items-center gap-2 text-xs text-white/60">
+                        <span class="rounded-full bg-emerald-400/10 border border-emerald-300/20 px-2 py-0.5">Tag
+                            1</span>
+                        <span class="rounded-full bg-white/10 border border-white/10 px-2 py-0.5">Tag 2</span>
+                        <a href="#" class="ml-auto underline decoration-dotted">Link</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Project Card 5 -->
+            <article
+                class="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur hover:border-emerald-300/30 transition-colors">
+                <div
+                    class="aspect-video overflow-hidden bg-gradient-to-br from-gray-700/50 to-gray-800/50 flex items-center justify-center">
+                    <div class="text-white/40 text-sm">Project Image</div>
+                </div>
+                <div class="p-4">
+                    <h3 class="font-semibold">Project Title</h3>
+                    <p class="mt-1 text-sm text-white/70 line-clamp-2">Brief description of what this project does and
+                        the
+                        technologies used to build it.</p>
+                    <div class="mt-3 flex items-center gap-2 text-xs text-white/60">
+                        <span class="rounded-full bg-emerald-400/10 border border-emerald-300/20 px-2 py-0.5">Tag
+                            1</span>
+                        <span class="rounded-full bg-white/10 border border-white/10 px-2 py-0.5">Tag 2</span>
+                        <a href="#" class="ml-auto underline decoration-dotted">Link</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Project Card 6 -->
+            <article
+                class="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur hover:border-emerald-300/30 transition-colors">
+                <div
+                    class="aspect-video overflow-hidden bg-gradient-to-br from-gray-700/50 to-gray-800/50 flex items-center justify-center">
+                    <div class="text-white/40 text-sm">Project Image</div>
+                </div>
+                <div class="p-4">
+                    <h3 class="font-semibold">Project Title</h3>
+                    <p class="mt-1 text-sm text-white/70 line-clamp-2">Brief description of what this project does and
+                        the
+                        technologies used to build it.</p>
+                    <div class="mt-3 flex items-center gap-2 text-xs text-white/60">
+                        <span class="rounded-full bg-emerald-400/10 border border-emerald-300/20 px-2 py-0.5">Tag
+                            1</span>
+                        <span class="rounded-full bg-white/10 border border-white/10 px-2 py-0.5">Tag 2</span>
+                        <a href="#" class="ml-auto underline decoration-dotted">Link</a>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+    <!-- About / Skills -->
+    <section id="about" class="mx-auto max-w-6xl px-4 py-16">
+        <div class="grid md:grid-cols-3 gap-10">
+            <div class="md:col-span-2">
+                <h2 class="text-2xl sm:text-3xl font-bold">About</h2>
+                <p class="mt-4 text-white/70 leading-relaxed">
+                    I'm a CS student at USF who likes building things that work well. I prefer vanilla JavaScript over
+                    frameworks because I want to understand what's actually happening under the hood. Plus, it's faster.
+                </p>
+            </div>
+            <div>
+                <h3 class="font-semibold">Core Stack</h3>
+                <ul class="mt-3 space-y-2 text-white/70">
+                    <li>HTML, CSS/Tailwind, JavaScript</li>
+                    <li>Node.js, Express</li>
+                    <li>Three.js (learning WebGL)</li>
+                    <li>Git, Linux, Vim</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="mx-auto max-w-6xl px-4 py-10 border-t border-white/5 text-sm text-white/60">
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-3">
+            <div>© <span id="year"></span> Liam McAuliffe</div>
+            <div class="flex items-center gap-4">
+                <a href="mailto:liam@example.com" class="hover:text-white underline decoration-dotted">Email</a>
+                <a href="#" class="hover:text-white underline decoration-dotted">GitHub</a>
+                <a href="#" class="hover:text-white underline decoration-dotted">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Command Palette Dialog -->
+    <div id="commandPalette" role="dialog" aria-modal="true" aria-labelledby="cmdTitle"
+        class="fixed inset-0 z-50 hidden">
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
+
+        <div
+            class="relative mx-auto mt-24 w-[92vw] max-w-2xl rounded-2xl border border-white/10 bg-canvas.soft shadow-glow">
+            <div class="p-3 border-b border-white/10">
+                <div class="flex items-center gap-2">
+                    <svg class="size-4 opacity-70" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="1.5">
+                        <circle cx="11" cy="11" r="8" />
+                        <path d="m21 21-4.3-4.3" />
+                    </svg>
+                    <input id="cmdInput" type="text" autocomplete="off" spellcheck="false"
+                        class="w-full bg-transparent outline-none placeholder:text-white/40"
+                        placeholder="Type a command… try: about, resume, project, theme, contact"
+                        aria-describedby="cmdHelp" />
+                    <kbd class="text-xs px-1.5 py-0.5 rounded bg-white/10 border border-white/10">Esc</kbd>
+                </div>
+                <p id="cmdHelp" class="sr-only">Enter a command, then press Enter to execute. Use Arrow keys to navigate
+                    results.</p>
+            </div>
+
+            <ul id="cmdResults" class="max-h-72 overflow-auto no-scrollbar divide-y divide-white/5"></ul>
+
+            <div class="p-2 text-[11px] text-white/50 flex items-center gap-2">
+                <span class="inline-block w-2 h-2 rounded-full bg-emerald-400/80"></span>
+                Palette‑first navigation · Fuzzy match · Actions (press →)
+            </div>
+        </div>
+    </div>
+
+    <!-- Resume Drawer -->
+    <div id="resumeDrawer" class="fixed inset-x-0 bottom-0 z-40 translate-y-full transition-transform duration-300">
+        <div class="mx-auto max-w-4xl m-4 rounded-2xl border border-white/10 bg-canvas.soft shadow-glow">
+            <div class="flex items-center justify-between p-4 border-b border-white/10">
+                <div class="text-sm text-white/70">Quick Resume</div>
+                <button id="closeResume" class="rounded-lg p-2 hover:bg-white/5 border border-white/10"
+                    aria-label="Close resume">
+                    <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M6 18 18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <div class="grid sm:grid-cols-3 gap-6 p-6 text-sm">
+                <div class="sm:col-span-2 space-y-2 text-white/80">
+                    <div class="font-semibold">Liam McAuliffe</div>
+                    <div>Computer Science Student · University of South Florida</div>
+                    <div class="text-white/60">CS student who likes building fast, simple things. Prefers vanilla JS
+                        over frameworks.
+                    </div>
+                </div>
+                <div class="space-y-2 text-white/70">
+                    <div><span class="text-white/50">Email</span> liam@example.com</div>
+                    <div><span class="text-white/50">Location</span> Tampa, FL</div>
+                    <div><span class="text-white/50">Website</span> your-domain.dev</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/index.js"></script>
+</body>
+
+</html>

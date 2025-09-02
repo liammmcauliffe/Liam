@@ -1,6 +1,37 @@
 {
+  "name": "liam-portfolio",
+  "version": "1.0.0",
+  "description": "my portfolio site - no frameworks, just works",
+  "main": "src/index.html",
+  "scripts": {
+    "dev": "npx tailwindcss -i ./src/styles/styles.css -o ./dist/output.css --watch",
+    "build:css": "npx tailwindcss -i ./src/styles/styles.css -o ./dist/output.css --minify",
+    "build:files": "node build.js",
+    "build": "npm run build:css && npm run build:files",
+    "serve": "npx http-server dist -p 3000 -o",
+    "start": "npm run build && npm run serve"
+  },
+  "keywords": [
+    "portfolio",
+    "vanilla-js",
+    "tailwind",
+    "no-frameworks"
+  ],
+  "author": "Liam McAuliffe <lmmcauliffe1223@gmail.com>",
+  "license": "MIT",
   "dependencies": {
     "@tailwindcss/cli": "^4.1.12",
     "tailwindcss": "^4.1.12"
-  }
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/liammmcauliffe/portfolio.git"
+  },
+  "bugs": {
+    "url": "https://github.com/liammmcauliffe/portfolio/issues"
+  },
+  "homepage": "https://liammmcauliffe.dev"
 }
